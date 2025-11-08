@@ -1,20 +1,72 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
-import "../../styles/globals.css"; // Import global styles
+import { Cormorant_Garamond, Raleway } from "next/font/google";
+import "swiper/css";
+import "swiper/css/navigation";
+import "./_assets/globals.css";
+import NextTopLoader from "nextjs-toploader";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import SiteLoader from "./_components/site-loader";
+import { getMetadata } from "./_utils";
+import { cn } from "../lib/utils";
+import Footer from "./_layout/footer";
+import Header from "./_layout/header";
+import SchemaOrg from "./_components/schema-org";
 
-export const metadata: Metadata = {
-  title: "Mani Group",
-  description: "Shaping Bengal's Skyline",
-};
+export const dynamic = "force-dynamic";
 
+const raleway = Raleway({
+	variable: "--font-raleway",
+});
+const cormorant_garamond = Cormorant_Garamond({
+	variable: "--font-cormorant-garamond",
+});
+export async function generateMetadata(): Promise<Metadata> {
+	return getMetadata();
+}
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
+	const organizationSchema: any = {
+		"@context": "https://schema.org",
+		"@type": "Organization",
+		name: "IQ City Medical College",
+		url: "https://medical.iqcity.in",
+		logo: "https://medical.iqcity.in/logo.png",
+		contactPoint: {
+			"@type": "ContactPoint",
+			telephone: "(+91) 003 2563 2587",
+			contactType: "customer service",
+			email: "info@iqcitymedicalcollege.com",
+			areaServed: "IN",
+			availableLanguage: ["English", "Bengali"],
+		},
+		address: {
+			"@type": "PostalAddress",
+			addressLocality: "Durgapur",
+			addressRegion: "West Bengal",
+			addressCountry: "IN",
+		},
+	};
+	return (
+		<html lang="en" suppressHydrationWarning>
+			<body
+				className={cn(
+					raleway.variable,
+					cormorant_garamond.variable,
+					"overflow-x-hidden"
+				)}
+			>
+				<SchemaOrg schema={organizationSchema} />
+				<SiteLoader />
+				<NextTopLoader color="#71717a" />
+				<Header />
+				{children}
+				<Footer />
+				<GoogleAnalytics gaId="G-0P3B8M7SWG" />
+			</body>
+		</html>
+	);
 }

@@ -1,0 +1,70 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@source inline("mani-title-wrapper mani-title text-center m-section");
+
+@theme {
+	--color-color-1: #ffffe4;
+	--color-color-2: #c4161c;
+	--color-color-3: #f58233;
+	--z-1: 1;
+	--z-2: 2;
+	--z-3: 3;
+	--z-4: 4;
+	--z-5: 5;
+	--z-6: 6;
+	--z-7: 7;
+	--z-8: 8;
+	--z-9: 9;
+	--font-raleway: var(--font-raleway);
+	--font-cormorant-garamond: var(--font-cormorant-garamond);
+}
+
+@utility container {
+	@apply sm:px-12 px-4 mx-auto;
+}
+
+@layer base {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-cormorant-garamond;
+	}
+
+	button {
+		@apply cursor-pointer font-raleway disabled:opacity-60;
+	}
+
+	body {
+		background-color: #f9f9f9;
+	}
+}
+
+@layer components {
+	.mani-button {
+		@apply px-6 py-3 bg-color-1 text-black font-semibold hover:bg-color-1;
+	}
+	.m-section {
+		@apply my-20 lg:my-30;
+	}
+	.p-section {
+		@apply py-20 lg:py-30;
+	}
+	.mani-title-wrapper {
+		@apply container lg:mb-12 mb-8;
+	}
+	.mani-title {
+		@apply text-3xl lg:text-5xl text-center lg:mb-4 mb-1 font-bold;
+	}
+	.col-count {
+		-moz-column-count: 2; /* Firefox */
+		-webkit-column-count: 2; /* Safari and Chrome */
+		column-count: 2;
+		column-gap: 40px;
+		-moz-column-gap: 40px;
+		-webkit-column-gap: 40px;
+	}
+}
