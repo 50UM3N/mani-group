@@ -54,7 +54,7 @@ const Timeline = () => {
 										<div className="z-10 absolute inset-0 bg-black/45"></div>
 										<div className="z-20 absolute bottom-0 left-0 w-full p-4">
 											<Image src={logo} alt="Logo" className="w-16 mb-2" />
-											<h4 className="text-white text-3xl font-bold">VISTA</h4>
+											<h4 className="text-white text-3xl font-bold">VISTA </h4>
 										</div>
 									</div>
 									<div className="py-2 px-4">
