@@ -7,7 +7,7 @@ const InnerBanner: React.FC<{
 	title?: string;
 	description?: string;
 	image?: ImageMeta;
-}> = ({ title, image }) => {
+}> = ({ title, description, image }) => {
 	return (
 		<div className="relative pt-[80]">
 			<Image
@@ -20,6 +20,7 @@ const InnerBanner: React.FC<{
 				<h1 className="relative z-10 uppercase text-center text-white lg:text-8xl text-4xl font-semibold">
 					{title || "Inner Banner"}
 				</h1>
+				{description && <p className="text-white text-center lg:text-4xl text-xl max-w-4xl mx-auto lg:mt-8 mt-4">{description}</p>}
 			</div>
 		</div>
 	);

@@ -12,7 +12,10 @@ import { cn } from "../lib/utils";
 import Footer from "./_layout/footer";
 import Header from "./_layout/header";
 import SchemaOrg from "./_components/schema-org";
-
+import "lightgallery/css/lightgallery.css";
+import "lightgallery/css/lg-thumbnail.css";
+import "lightgallery/css/lg-zoom.css";
+import "lightgallery/css/lg-video.css";
 export const dynamic = "force-dynamic";
 
 const raleway = Raleway({

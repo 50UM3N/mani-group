@@ -20,21 +20,21 @@ const ConnectForm = () => {
 						<div>
 							<input
 								type="text"
-								className="border-2 border-white px-4 py-2 w-full focus:outline-none placeholder:text-white/60 text-white"
+								className="border-2 border-white px-4 py-2 w-full placeholder:text-white/60 text-white"
 								placeholder="Your Name *"
 							/>
 						</div>
 						<div>
 							<input
 								type="email"
-								className="border-2 border-white px-4 py-2 w-full focus:outline-none placeholder:text-white/60 text-white"
+								className="border-2 border-white px-4 py-2 w-full placeholder:text-white/60 text-white"
 								placeholder="Your Email *"
 							/>
 						</div>
 						<div>
 							<input
 								type="text"
-								className="border-2 border-white px-4 py-2 w-full focus:outline-none placeholder:text-white/60 text-white"
+								className="border-2 border-white px-4 py-2 w-full placeholder:text-white/60 text-white"
 								placeholder="Your Mobile *"
 							/>
 						</div>
