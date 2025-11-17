@@ -27,3 +27,15 @@ export const DateFormatter = {
 export const getMockImage = (img?: ImageMeta | null) => {
   return img?.meta ;
 };
+
+
+export const VERTICAL = [
+  { label: "All", value: "" },
+  { label: "Corporate", value: "corporate" },
+  { label: "CSR", value: "csr" },
+  { label: "Commercial", value: "commercial" },
+  { label: "Retail", value: "retail" },
+  { label: "EduHealth", value: "eduhealth" },
+  { label: "Hospitality", value: "hospitality" },
+  { label: "Affor", value: "affor" },
+]

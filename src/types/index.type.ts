@@ -9,7 +9,7 @@ export interface ImageMeta {
 
 export interface PageProps<T extends object = any> {
 	params?: Promise<SegmentParams<T>>;
-	searchParams?: Promise<any>;
+	searchParams?: Promise<SegmentParams<T>>;
 }
 type SegmentParams<T extends object = any> = T extends Record<string, any>
 	? {

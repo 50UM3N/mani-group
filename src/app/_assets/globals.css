@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-@source inline("mani-title-wrapper mani-title text-center m-section");
+@source inline("mani-title-wrapper mani-title text-center m-section lg:grid lg:grid-cols-12 lg:items-center lg:col-span-5 mx-auto lg:order-1 lg:col-span-7");
 
 @theme {
 	--color-color-1: #ffffe4;
@@ -41,7 +41,7 @@
 	body {
 		background-color: #f9f9f9;
 	}
-	input, textarea {
+	input, textarea, select {
 		@apply focus:outline-none;
 	}
 }

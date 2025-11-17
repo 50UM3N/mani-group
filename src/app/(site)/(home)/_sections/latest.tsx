@@ -53,11 +53,11 @@ const Latest = () => {
 				slidesPerView={1.3}
 				initialSlide={1}
 				centeredSlides={true}
-        breakpoints={{
-						1024: {
-							spaceBetween: 60,
-						},
-					}}
+				breakpoints={{
+					1024: {
+						spaceBetween: 60,
+					},
+				}}
 			>
 				{data.map((slide, index) => (
 					<SwiperSlide key={index}>
@@ -67,10 +67,19 @@ const Latest = () => {
 								src={slide.image}
 								alt={slide.title}
 							/>
-              <div className="absolute bottom-0 w-full left-0 p-8 bg-linear-to-b from-transparent to-black pt-16">
-                <h3 className="text-white font-semibold lg:text-5xl sm:text-2xl text-lg mb-2">{slide.title}</h3>
-                <div className="text-white font-semibold lg:text-3xl flex items-center gap-2"><span>BY</span><Image className="w-auto lg:max-h-12 max-h-6" src={logo} alt="Logo" /></div>
-              </div>
+							<div className="absolute bottom-0 w-full left-0 p-8 bg-linear-to-b from-transparent to-black pt-16">
+								<h3 className="text-white font-semibold lg:text-5xl sm:text-2xl text-lg mb-2">
+									{slide.title}
+								</h3>
+								<div className="text-white font-semibold lg:text-3xl flex items-center gap-2">
+									<span>BY</span>
+									<Image
+										className="w-auto lg:max-h-12 max-h-6"
+										src={logo}
+										alt="Logo"
+									/>
+								</div>
+							</div>
 						</div>
 					</SwiperSlide>
 				))}
