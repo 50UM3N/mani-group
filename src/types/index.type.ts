@@ -6,7 +6,11 @@ export interface ImageMeta {
 	};
 	alt: string;
 }
-
+export interface Statistics {
+	label: string;
+	value: string;
+	counter: number;
+}
 export interface PageProps<T extends object = any> {
 	params?: Promise<SegmentParams<T>>;
 	searchParams?: Promise<SegmentParams<T>>;

@@ -21,7 +21,6 @@ const Gallery: React.FC<{
 	}, []);
 
 	const openGallery = (index: number) => {
-		console.log(lightGalleryRefs.current[index]);
 		if (lightGalleryRefs.current[index]) {
 			lightGalleryRefs.current[index].openGallery(0);
 		}
