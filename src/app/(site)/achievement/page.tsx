@@ -10,7 +10,7 @@ import m1 from "@/app/_assets/mock/m1.png";
 import bg2 from "@/app/_assets/bg/bg2.png";
 import m2 from "@/app/_assets/mock/m2.png";
 import Link from "next/link";
-import { VERTICAL } from "@/lib/utils";
+import VerticalSelect from "@/app/_components/vertical-select";
 
 export async function generateMetadata(): Promise<Metadata> {
 	const data: SEOData = await http(`/seo/page/award`);
@@ -71,17 +71,7 @@ const Page = async ({ searchParams }: PageProps<{ vertical: string }>) => {
 							<h2 className="mani-title text-left">AWARDS</h2>
 							<p>Explore Our Achievements</p>
 						</div>
-						<select
-							name="latestByMani"
-							id="latestByMani"
-							className="border-2 border-black px-4 py-2 min-w-28"
-						>
-							{VERTICAL.map((item, index) => (
-								<option value={item.value} key={index}>
-									{item.label}
-								</option>
-							))}
-						</select>
+						<VerticalSelect link="/achievement" />
 					</div>
 
 					<div className="container">
