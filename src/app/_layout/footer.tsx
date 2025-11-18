@@ -1,9 +1,10 @@
 import React from "react";
 import footerlogo from "@/app/_assets/images/footer-logo.png";
 import Image from "next/image";
-import { IconArrowRight } from "@tabler/icons-react";
 import SocialLinks from "../_components/social-links";
-const Footer = () => {
+import { MenuType } from "@/types/api/menu.type";
+import NewsLetterForm from "./_components/news-letter-form";
+const Footer: React.FC<{ menu: MenuType }> = ({ menu }) => {
 	return (
 		<footer className="p-section pb-8 bg-color-1">
 			<div className="container">
@@ -31,101 +32,24 @@ const Footer = () => {
 							</p>
 						</div>
 					</div>
-					<div className="lg:col-span-2 cols-span-1">
-						<h4 className="font-bold mb-2 text-lg">ABOUT MANI</h4>
-						<ul className="space-y-1">
-							<li>
-								<a href="">Mission & Vision</a>
-							</li>
-							<li>
-								<a href="">Mission & Vision</a>
-							</li>
-							<li>
-								<a href="">Mission & Vision</a>
-							</li>
-							<li>
-								<a href="">Mission & Vision</a>
-							</li>
-							<li>
-								<a href="">Mission & Vision</a>
-							</li>
-						</ul>
-					</div>
-					<div className="lg:col-span-2 cols-span-1">
-						<h4 className="font-bold mb-2 text-lg">VERTICALS</h4>
-						<ul className="space-y-1">
-							<li>
-								<a href="">Mission & Vision</a>
-							</li>
-							<li>
-								<a href="">Mission & Vision</a>
-							</li>
-							<li>
-								<a href="">Mission & Vision</a>
-							</li>
-							<li>
-								<a href="">Mission & Vision</a>
-							</li>
-							<li>
-								<a href="">Mission & Vision</a>
-							</li>
-						</ul>
-					</div>
-					<div className="lg:col-span-2 cols-span-1">
-						<h4 className="font-bold mb-2 text-lg">MEDIA CENTRE</h4>
-						<ul className="space-y-1">
-							<li>
-								<a href="">Mission & Vision</a>
-							</li>
-							<li>
-								<a href="">Mission & Vision</a>
-							</li>
-							<li>
-								<a href="">Mission & Vision</a>
-							</li>
-							<li>
-								<a href="">Mission & Vision</a>
-							</li>
-							<li>
-								<a href="">Mission & Vision</a>
-							</li>
-						</ul>
-					</div>
-					<div className="lg:col-span-2 cols-span-1">
-						<h4 className="font-bold mb-2 text-lg">CAREERS</h4>
-						<ul className="space-y-1">
-							<li>
-								<a href="">Mission & Vision</a>
-							</li>
-						</ul>
-					</div>
+					{menu.map((item) => (
+						<div className="lg:col-span-2 cols-span-1" key={item.id}>
+							<h4 className="font-bold mb-2 text-lg">{item.title}</h4>
+							<ul className="space-y-1">
+								{item.children.map((subItem) => (
+									<li key={subItem.id}>
+										<a href={subItem.url}>{subItem.title}</a>
+									</li>
+								))}
+							</ul>
+						</div>
+					))}
 				</div>
 				<div className="flex sm:flex-row flex-col justify-between mb-8 gap-8">
 					<SocialLinks
 						links={{ facebook: "#", x: "#", instagram: "#", youtube: "#" }}
 					/>
-					<div>
-						<label
-							htmlFor="subscription"
-							className="font-semibold mb-1 inline-block uppercase"
-						>
-							Subscribe to newsletter
-						</label>
-						<div className="border-2 border-black rounded-lg flex">
-							<input
-								id="subscription"
-								type="email"
-								placeholder="Enter your email"
-								className="focus:outline-none px-3 py-1 sm:w-auto w-full"
-							/>
-							<button
-								type="submit"
-								className="bg-black text-white size-9 flex items-center justify-center"
-							>
-								<IconArrowRight />
-							</button>
-						</div>
-					</div>
+					<NewsLetterForm />
 				</div>
 				<div className="border-t border-black pt-8">
 					<p className="text-sm text-center">

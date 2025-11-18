@@ -2,25 +2,25 @@ import Content from "@/app/_components/content";
 import InnerBanner from "@/app/_components/inner-banner";
 import { getMetadata } from "@/app/_utils";
 import http from "@/lib/http";
-import { TestimonialPageInfo } from "@/types/api/testimonial.type";
 import { PageProps, SEOData } from "@/types/index.type";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import bg2 from "@/app/_assets/bg/bg2.png";
 import VerticalSelect from "@/app/_components/vertical-select";
-import { IconQuoteFilled } from "@tabler/icons-react";
+import ContentCard from "@/app/_components/content-card";
+import { AnnouncementPageInfo } from "@/types/api/announcement.type";
 
 export async function generateMetadata(): Promise<Metadata> {
-	const data: SEOData = await http(`/seo/page/testimonial`);
+	const data: SEOData = await http(`/seo/page/announcement`);
 	return getMetadata(data);
 }
 const Page = async ({ searchParams }: PageProps<{ vertical: string }>) => {
 	const vertical = (await searchParams)?.vertical;
 	const url = vertical
-		? `/page/testimonial?vertical=${vertical}`
-		: `/page/testimonial`;
-	const data: TestimonialPageInfo = await http(url);
+		? `/page/announcement?vertical=${vertical}`
+		: `/page/announcement`;
+	const data: AnnouncementPageInfo = await http(url);
 
 	return (
 		<>
@@ -46,27 +46,17 @@ const Page = async ({ searchParams }: PageProps<{ vertical: string }>) => {
 					/>
 					<div className="mani-title-wrapper flex items-center justify-between">
 						<div className="">
-							<h2 className="mani-title text-left">CUSTOMER VOICES</h2>
-							<p>
-								Its Their Voice That Drives Mani To Be Excellent At Every
-								Corner.
-							</p>
+							<h2 className="mani-title text-left">THE ANNOUNCEMENTS</h2>
+							<p>News and Updates About Our Activities & Presence </p>
 						</div>
-						<VerticalSelect link="/testimonial" />
+						<VerticalSelect link="/announcement" />
 					</div>
 
 					<div className="container">
-						<div className="grid grid-cols-1 gap-8">
-							{data.testimonial.map((item, index) => (
-								<Link
-									href={`/testimonial/${item.slug}`}
-									key={index}
-									className="bg-white sm:text-2xl block sm:p-12 p-4"
-								>
-									<IconQuoteFilled className="text-color-3" size={70} />
-									<p className="mb-6">{item.content}</p>
-									<p className="font-semibold">{item.title}</p>
-									<p>{item.designation}</p>
+						<div className="grid lg:grid-cols-2 grid-cols-1 gap-8">
+							{data.announcement.map((item, index) => (
+								<Link href={`/announcement/${item.slug}`} key={index}>
+									<ContentCard data={item} />
 								</Link>
 							))}
 						</div>

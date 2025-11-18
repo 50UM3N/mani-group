@@ -16,6 +16,8 @@ import "lightgallery/css/lightgallery.css";
 import "lightgallery/css/lg-thumbnail.css";
 import "lightgallery/css/lg-zoom.css";
 import "lightgallery/css/lg-video.css";
+import { MenuType } from "@/types/api/menu.type";
+import http from "@/lib/http";
 export const dynamic = "force-dynamic";
 
 const raleway = Raleway({
@@ -27,7 +29,7 @@ const cormorant_garamond = Cormorant_Garamond({
 export async function generateMetadata(): Promise<Metadata> {
 	return getMetadata();
 }
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
@@ -53,6 +55,7 @@ export default function RootLayout({
 			addressCountry: "IN",
 		},
 	};
+	const menu: MenuType = await http(`/menus/8`);
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<body
@@ -65,9 +68,9 @@ export default function RootLayout({
 				<SchemaOrg schema={organizationSchema} />
 				<SiteLoader />
 				<NextTopLoader color="#71717a" />
-				<Header />
+				<Header menu={menu} />
 				{children}
-				<Footer />
+				<Footer menu={menu} />
 				<GoogleAnalytics gaId="G-0P3B8M7SWG" />
 			</body>
 		</html>

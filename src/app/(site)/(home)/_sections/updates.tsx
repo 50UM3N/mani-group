@@ -2,42 +2,11 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import d7 from "@/app/_assets/disposable/d7.png";
-import d8 from "@/app/_assets/disposable/d8.png";
-import d9 from "@/app/_assets/disposable/d9.png";
-import d10 from "@/app/_assets/disposable/d10.png";
-import d11 from "@/app/_assets/disposable/d11.png";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
-import Image from "next/image";
-const data = [
-	{
-		title: "Mani Square Turns Fifteen",
-		date: "March 2025",
-		image: d7,
-	},
-	{
-		title: "BAISAKHI BLAST 2025",
-		date: "April 2025",
-		image: d8,
-	},
-	{
-		title: "KOLKATA MARRIOTT",
-		date: "May 2025",
-		image: d9,
-	},
-	{
-		title: "BANGALORE MARRIOTT",
-		date: "June 2025",
-		image: d10,
-	},
-	{
-		title: "MUMBAI MARRIOTT",
-		date: "July 2025",
-		image: d11,
-	},
-];
+import { NewsInfo } from "@/types/api/in-the-news.type";
+import ContentCard from "@/app/_components/content-card";
 
-const Updates = () => {
+const Updates: React.FC<{ data: NewsInfo[] }> = ({ data }) => {
 	return (
 		<section className="m-section relative">
 			<div className="mani-title-wrapper">
@@ -64,7 +33,7 @@ const Updates = () => {
 				>
 					{data.map((slide, index) => (
 						<SwiperSlide key={index}>
-							<ContentCard {...slide} />
+							<ContentCard data={slide} />
 						</SwiperSlide>
 					))}
 				</Swiper>
@@ -80,24 +49,6 @@ const Updates = () => {
 				</div>
 			</div>
 		</section>
-	);
-};
-
-const ContentCard: React.FC<{ title: string; image: any; date: string }> = ({
-	title,
-	image,
-	date,
-}) => {
-	return (
-		<div>
-			<Image
-				src={image}
-				alt={title}
-				className="aspect-4/3 object-cover w-full mb-2"
-			/>
-			<p>{date}</p>
-			<h3 className="font-semibold lg:text-3xl text-xl">{title}</h3>
-		</div>
 	);
 };
 

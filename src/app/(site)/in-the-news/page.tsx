@@ -49,7 +49,7 @@ const Page = async ({ searchParams }: PageProps<{ vertical: string }>) => {
 							<h2 className="mani-title text-left">THE NEWS CORNER</h2>
 							<p>News and Updates About Our Activities & Presence </p>
 						</div>
-						<VerticalSelect />
+						<VerticalSelect link="/in-the-news" />
 					</div>
 
 					<div className="container">

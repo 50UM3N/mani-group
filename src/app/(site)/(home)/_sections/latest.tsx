@@ -2,38 +2,13 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import d7 from "@/app/_assets/disposable/d7.png";
-import d8 from "@/app/_assets/disposable/d8.png";
-import d9 from "@/app/_assets/disposable/d9.png";
-import d10 from "@/app/_assets/disposable/d10.png";
-import d11 from "@/app/_assets/disposable/d11.png";
 import logo from "@/app/_assets/images/logo.png";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import Image from "next/image";
-const data = [
-	{
-		title: "SILIGURI MARRIOTT",
-		image: d7,
-	},
-	{
-		title: "DURGAPUR MARRIOTT",
-		image: d8,
-	},
-	{
-		title: "KOLKATA MARRIOTT",
-		image: d9,
-	},
-	{
-		title: "BANGALORE MARRIOTT",
-		image: d10,
-	},
-	{
-		title: "MUMBAI MARRIOTT",
-		image: d11,
-	},
-];
+import m2 from "@/app/_assets/mock/m2.png";
+import { AnnouncementInfo } from "@/types/api/announcement.type";
 
-const Latest = () => {
+const Latest: React.FC<{ data: AnnouncementInfo[] }> = ({ data }) => {
 	return (
 		<section className="m-section relative">
 			<div className="mani-title-wrapper">
@@ -64,7 +39,7 @@ const Latest = () => {
 						<div className="relative">
 							<Image
 								className="aspect-video object-cover w-full"
-								src={slide.image}
+								src={slide.featured_image?.meta || m2}
 								alt={slide.title}
 							/>
 							<div className="absolute bottom-0 w-full left-0 p-8 bg-linear-to-b from-transparent to-black pt-16">

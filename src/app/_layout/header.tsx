@@ -8,148 +8,12 @@ import { useState } from "react";
 import { MenuType } from "@/types/api/menu.type";
 import Link from "next/link";
 
-const menu: MenuType = [
-	{
-		id: 1,
-		title: "About Mani",
-		url: "#",
-		children: [
-			{
-				id: 11,
-				title: "Mission & Vision",
-				url: "/about/mission-vision",
-				children: [],
-			},
-			{
-				id: 12,
-				title: "Team",
-				url: "/about/team",
-				children: [],
-			},
-			{
-				id: 13,
-				title: "CSR",
-				url: "/about/csr",
-				children: [],
-			},
-			{
-				id: 14,
-				title: "Testimonials",
-				url: "/about/testimonials",
-				children: [],
-			},
-			{
-				id: 15,
-				title: "Awards & Achievements",
-				url: "/about/awards-achievements",
-				children: [],
-			},
-			{
-				id: 16,
-				title: "Mani Colleagues",
-				url: "/about/colleagues",
-				children: [],
-			},
-			{
-				id: 17,
-				title: "Contact Us",
-				url: "/about/contact",
-				children: [],
-			},
-		],
-	},
-	{
-		id: 2,
-		title: "Verticals",
-		url: "#",
-		children: [
-			{
-				id: 21,
-				title: "Residential",
-				url: "/verticals/residential",
-				children: [],
-			},
-			{
-				id: 22,
-				title: "Commercial",
-				url: "/verticals/commercial",
-				children: [],
-			},
-			{
-				id: 23,
-				title: "Edu-Health",
-				url: "/verticals/edu-health",
-				children: [],
-			},
-			{
-				id: 24,
-				title: "Hospitality",
-				url: "/verticals/hospitality",
-				children: [],
-			},
-			{
-				id: 25,
-				title: "Retail",
-				url: "/verticals/retail",
-				children: [],
-			},
-		],
-	},
-	{
-		id: 3,
-		title: "Media Centre",
-		url: "#",
-		children: [
-			{
-				id: 31,
-				title: "In the News",
-				url: "/media/news",
-				children: [],
-			},
-			{
-				id: 32,
-				title: "Latest @ Mani",
-				url: "/media/latest",
-				children: [],
-			},
-			{
-				id: 33,
-				title: "Photo Gallery",
-				url: "/media/photos",
-				children: [],
-			},
-			{
-				id: 34,
-				title: "Video Gallery",
-				url: "/media/videos",
-				children: [],
-			},
-			{
-				id: 35,
-				title: "News Letter",
-				url: "/media/newsletter",
-				children: [],
-			},
-		],
-	},
-	{
-		id: 4,
-		title: "Careers",
-		url: "#",
-		children: [
-			{
-				id: 41,
-				title: "Life @ Mani",
-				url: "/careers/life-at-mani",
-				children: [],
-			},
-		],
-	},
-];
-
-const Header = () => {
+const Header: React.FC<{ menu: MenuType }> = ({ menu }) => {
 	const [open, setOpen] = useState(false);
 	const [openedMenu, setOpenedMenu] = useState(-1);
+	const handleMenuClick = () => {
+		setOpen((s) => !s);
+	};
 	return (
 		<>
 			<header className="absolute top-0 left-0 right-0 z-10 p-4 sm:p-6 md:p-8">
@@ -158,14 +22,16 @@ const Header = () => {
 						links={{ facebook: "#", x: "#", instagram: "#", youtube: "#" }}
 						className="text-white hidden lg:flex"
 					/>
-					<Image
-						src={logo}
-						alt="Mani Logo"
-						className="lg:absolute lg:left-1/2 lg:-translate-x-1/2 w-full lg:max-w-48 max-w-32"
-					/>
+					<Link href="/" className="lg:absolute lg:left-1/2 lg:-translate-x-1/2 block">
+						<Image
+							src={logo}
+							alt="Mani Logo"
+							className="w-full lg:max-w-48 max-w-32"
+						/>
+					</Link>
 					<button
 						className="flex items-center space-x-2 text-white mt-[11px]"
-						onClick={() => setOpen(true)}
+						onClick={handleMenuClick}
 					>
 						<span className="text-lg">Menu</span>
 						<IconMenu2 />
@@ -177,7 +43,7 @@ const Header = () => {
 					<div className="container p-section space-y-20">
 						<div className="flex justify-between">
 							<Image src={logov2} alt="Mani Logo" className="w-sm " />
-							<button onClick={() => setOpen(false)}>
+							<button onClick={handleMenuClick}>
 								<IconX className="size-16" />
 							</button>
 						</div>
@@ -214,6 +80,7 @@ const Header = () => {
 											className="font-cormorant-garamond text-4xl cursor-pointer"
 											key={item.id}
 											href={item.url}
+											onClick={handleMenuClick}
 										>
 											{item.title}
 										</Link>

@@ -3,12 +3,12 @@ import { VERTICAL } from "@/lib/utils";
 import { useRouter } from "nextjs-toploader/app";
 import React from "react";
 
-const VerticalSelect = () => {
+const VerticalSelect: React.FC<{ link: string }> = ({ link }) => {
 	const router = useRouter();
 	const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		const selectedVertical = e.target.value;
 		const queryParam = selectedVertical ? `?vertical=${selectedVertical}` : "";
-		router.push(`/in-the-news${queryParam}`);
+		router.push(`${link}${queryParam}`);
 	};
 	return (
 		<select

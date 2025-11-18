@@ -6,26 +6,32 @@ import d10 from "@/app/_assets/disposable/d10.png";
 import d11 from "@/app/_assets/disposable/d11.png";
 import Image from "next/image";
 import logo from "@/app/_assets/images/logo.png";
+import Link from "next/link";
 const data = [
 	{
 		title: "RESIDENTIAL",
 		image: d7,
+		url: "/residential",
 	},
 	{
 		title: "RETAIL",
 		image: d8,
+		url: "/retail",
 	},
 	{
 		title: "HOSPITALITY",
 		image: d9,
+		url: "/hospitality",
 	},
 	{
 		title: "COMMERCIAL",
 		image: d10,
+		url: "/commercial",
 	},
 	{
 		title: "EDU-HEALTH",
 		image: d11,
+		url: "/eduhealth",
 	},
 ];
 
@@ -40,24 +46,20 @@ const Verticals = () => {
 			</div>
 			<div className="lg:container lg:flex items-center ">
 				{data.map((item, index) => (
-					<div className="relative" key={index}>
+					<Link href={item.url} className="block relative overflow-hidden group" key={index}>
 						<Image
 							src={item.image}
 							alt={item.title}
-							className="w-full lg:h-[800px] h-full object-cover"
+							className="w-full lg:h-[800px] h-full object-cover group-hover:scale-110 transition-transform duration-500"
 						/>
 						<div className="bg-black/60 absolute top-0 left-0 w-full h-full z-10"></div>
 						<div className="absolute top-1/2 left-1/2 w-full z-20 -translate-x-1/2 -translate-y-1/2">
-							<Image
-								src={logo}
-								alt="Logo"
-								className="w-24 mx-auto mb-2"
-							/>
+							<Image src={logo} alt="Logo" className="w-24 mx-auto mb-2" />
 							<h2 className="text-white text-2xl font-bold text-center">
 								{item.title}
 							</h2>
 						</div>
-					</div>
+					</Link>
 				))}
 			</div>
 		</section>

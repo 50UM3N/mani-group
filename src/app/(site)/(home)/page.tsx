@@ -14,7 +14,8 @@ import { SEOData } from "@/types/index.type";
 import { Metadata } from "next";
 import { getMetadata } from "@/app/_utils";
 import { HomePageInfo } from "@/types/api/home.type";
-import { SiteSettingsInfo } from "@/types/api/site-settings.type";
+// import { SiteSettingsInfo } from "@/types/api/site-settings.type";
+import Link from "next/link";
 
 export async function generateMetadata(): Promise<Metadata> {
 	const data: SEOData = await http(`/seo/page/home`);
@@ -23,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const Page = async () => {
 	const data: HomePageInfo = await http(`/page/home`);
-	const siteSettings: SiteSettingsInfo = await http(`/site-settings`);
+	// const siteSettings: SiteSettingsInfo = await http(`/site-settings`);
 	return (
 		<main>
 			<HeroSlider />
@@ -44,9 +45,12 @@ const Page = async () => {
 							<p className="font-bold text-2xl text-zinc-600 lg:mb-12 mb-6">
 								CEO
 							</p>
-							<button className="flex items-center gap-2 font-semibold">
+							<Link
+								href="/about-us"
+								className="flex items-center gap-2 font-semibold"
+							>
 								Know More <IconArrowRight />
-							</button>
+							</Link>
 						</div>
 						<div className="col-span-1">
 							<Image src={d12} alt="Disposable Image" className="" />
@@ -54,9 +58,9 @@ const Page = async () => {
 					</div>
 				</div>
 			</section>
-			<Awards />
-			<Latest />
-			<Updates />
+			<Awards data={data.award} />
+			<Latest data={data.announcement} />
+			<Updates data={data.news} />
 			<ConnectForm />
 		</main>
 	);

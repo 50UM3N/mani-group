@@ -9,25 +9,8 @@ import {
 } from "@tabler/icons-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-const data = [
-	{
-		title: "ZeeMedia Education <br /> Excellence 2021",
-		description: "Mani Square",
-	},
-	{
-		title: "Zee24 Ghanta Education <br /> Excellence 2021",
-		description: "Mani Square",
-	},
-	{
-		title: "Zee24 Ghanta Education <br /> Excellence 2021",
-		description: "Mani Square",
-	},
-	{
-		title: "Certificate of <br /> Accreditation From NABH",
-		description: "IQ City Medical",
-	},
-];
-const Awards = () => {
+import { AwardsInfo } from "@/types/api/achievements.type";
+const Awards: React.FC<{ data: AwardsInfo[] }> = ({ data }) => {
 	return (
 		<section className="m-section p-section relative">
 			<Image
@@ -60,7 +43,15 @@ const Awards = () => {
 				>
 					{data.map((slide, index) => (
 						<SwiperSlide key={index}>
-							<AwardCard {...slide} />
+							<div className="relative pt-10">
+								<div className="text-white sm:p-12 p-8 bg-white/25 pt-16 rounded-xl backdrop-blur-sm text-xl font-semibold text-center space-y-4">
+									<div className="bg-color-2 absolute left-1/2 -translate-x-1/2 top-0 -translate-y-1/2 flex justify-center items-center size-20 rounded-full">
+										<IconAwardFilled size={40} />
+									</div>
+									<p>{slide.title}</p>
+									<p>{slide.excerpt}</p>
+								</div>
+							</div>
 						</SwiperSlide>
 					))}
 				</Swiper>
@@ -79,22 +70,5 @@ const Awards = () => {
 	);
 };
 
-const AwardCard: React.FC<{ title: string; description: string }> = ({
-	title,
-	description,
-	...rest
-}) => {
-	return (
-		<div className="relative pt-10" {...rest}>
-			<div className="text-white sm:p-12 p-8 bg-white/25 pt-16 rounded-xl backdrop-blur-sm text-xl font-semibold text-center space-y-4">
-				<div className="bg-color-2 absolute left-1/2 -translate-x-1/2 top-0 -translate-y-1/2 flex justify-center items-center size-20 rounded-full">
-					<IconAwardFilled size={40} />
-				</div>
-				<p dangerouslySetInnerHTML={{ __html: title }}></p>
-				<p>{description}</p>
-			</div>
-		</div>
-	);
-};
 
 export default Awards;

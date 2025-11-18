@@ -32,6 +32,7 @@ export const getMockImage = (img?: ImageMeta | null) => {
 export const VERTICAL = [
   { label: "All", value: "" },
   { label: "Corporate", value: "corporate" },
+  { label: "Residential", value: "residential" },
   { label: "CSR", value: "csr" },
   { label: "Commercial", value: "commercial" },
   { label: "Retail", value: "retail" },
