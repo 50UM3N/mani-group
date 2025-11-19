@@ -2,7 +2,7 @@
 import m2 from "@/app/_assets/mock/m2.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
-import { EffectCoverflow, Navigation, Pagination } from "swiper/modules";
+import { EffectCoverflow, Navigation } from "swiper/modules";
 import "swiper/css/effect-coverflow";
 import bg2 from "@/app/_assets/bg/bg2.png";
 import logo from "@/app/_assets/images/logo.png";
