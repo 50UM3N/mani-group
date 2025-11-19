@@ -9,7 +9,6 @@ import Slider from "./slider";
 import bg2 from "@/app/_assets/bg/bg2.png";
 import m2 from "@/app/_assets/mock/m2.png";
 import Content from "@/app/_components/content";
-
 const Slug: React.FC<{ data: PageDetails & ProjectInfo }> = ({ data }) => {
 	return (
 		<>
@@ -65,7 +64,7 @@ const Slug: React.FC<{ data: PageDetails & ProjectInfo }> = ({ data }) => {
 						<div className="container">
 							<div className="grid lg:grid-cols-2 gap-8 items-center">
 								<Image
-									src={amenity.image.meta}
+									src={amenity.image?.meta || m2}
 									alt={amenity.title}
 									className={cn("w-full", { "lg:order-1": index % 2 == 1 })}
 								/>

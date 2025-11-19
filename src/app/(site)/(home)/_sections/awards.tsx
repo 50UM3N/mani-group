@@ -49,7 +49,7 @@ const Awards: React.FC<{ data: AwardsInfo[] }> = ({ data }) => {
 										<IconAwardFilled size={40} />
 									</div>
 									<p>{slide.title}</p>
-									<p>{slide.excerpt}</p>
+									<p className="line-clamp-2">{slide.excerpt}</p>
 								</div>
 							</div>
 						</SwiperSlide>

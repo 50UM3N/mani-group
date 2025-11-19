@@ -14,7 +14,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 const Page = async () => {
 	const data: CommercialPageInfo = await http(`/page/commercial`);
-	console.log(data);
 	return (
 		<>
 			<InnerBanner
