@@ -5,15 +5,16 @@ import { SEOData } from "@/types/index.type";
 import { Metadata } from "next";
 import m1 from "@/app/_assets/mock/m1.png";
 import Image from "next/image";
-import { CommercialPageInfo } from "@/types/api/project.type";
+import { EduHealthPageInfo } from "@/types/api/project.type";
 import Timeline from "../_section/timeline";
 
 export async function generateMetadata(): Promise<Metadata> {
-	const data: SEOData = await http(`/seo/page/commercial`);
+	const data: SEOData = await http(`/seo/page/eduhealth`);
 	return getMetadata(data);
 }
 const Page = async () => {
-	const data: CommercialPageInfo = await http(`/page/commercial`);
+	const data: EduHealthPageInfo = await http(`/page/eduhealth`);
+	console.log(data);
 	return (
 		<>
 			<InnerBanner
@@ -54,7 +55,7 @@ const Page = async () => {
 					</div>
 				</section>
 			)}
-			<Timeline data={data.commercial} link="/commercial" />
+			<Timeline data={data.eduhealth} link="/eduhealth" />
 		</>
 	);
 };
