@@ -55,7 +55,7 @@ export default async function RootLayout({
 			addressCountry: "IN",
 		},
 	};
-	const menu: MenuType = await http(`/menus/8`);
+	const menu: MenuType = await http(`/menus/9`);
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<body
