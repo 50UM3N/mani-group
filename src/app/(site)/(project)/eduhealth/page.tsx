@@ -14,7 +14,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 const Page = async () => {
 	const data: EduHealthPageInfo = await http(`/page/eduhealth`);
-	console.log(data);
 	return (
 		<>
 			<InnerBanner
