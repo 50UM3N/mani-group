@@ -5,7 +5,9 @@ import Image from "next/image";
 import React, { useId } from "react";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import LightGallery from "lightgallery/react";
+import lgVdeo from "lightgallery/plugins/video";
+import lgZoom from "lightgallery/plugins/zoom";
 const Slider: React.FC<{ data: ImageMeta[] }> = ({ data }) => {
 	const id = useId();
 	if (!data) return null;
@@ -28,7 +30,15 @@ const Slider: React.FC<{ data: ImageMeta[] }> = ({ data }) => {
 			>
 				{data.map((slide, index) => (
 					<SwiperSlide key={index}>
-						<Image src={slide.meta} alt={slide.alt} className="w-full" />
+						<LightGallery plugins={[lgZoom, lgVdeo]} speed={500}>
+							<a
+								data-src={slide.meta.src}
+								href={slide.meta.src}
+								className="relative block w-full"
+							>
+								<Image src={slide.meta} alt={slide.alt} className="w-full" />
+							</a>
+						</LightGallery>
 					</SwiperSlide>
 				))}
 			</Swiper>

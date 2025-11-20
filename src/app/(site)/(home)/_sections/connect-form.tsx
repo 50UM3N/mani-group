@@ -13,7 +13,7 @@ const ConnectForm: React.FC<{ type?: string }> = ({
 	const [success, setSuccess] = useState<null | string>(null);
 	const [error, setError] = useState<null | string>(null);
 
-	const formId = 1109; // Replace with your actual CF7 form ID
+	const formId = 1109;
 
 	const {
 		handleBlur,
@@ -29,6 +29,7 @@ const ConnectForm: React.FC<{ type?: string }> = ({
 			youremail: "",
 			yourmobile: "",
 			consent: false,
+			formtype: type === "connect-form" ? "" : type,
 		},
 		validationSchema: Yup.object({
 			yourname: Yup.string().required("Name is required"),
@@ -40,6 +41,7 @@ const ConnectForm: React.FC<{ type?: string }> = ({
 				[true],
 				"You must agree to the privacy policy"
 			),
+			formtype: Yup.string().required("Please select a type"),
 		}),
 		onSubmit: async (values) => {
 			setSuccess(null);
@@ -47,25 +49,22 @@ const ConnectForm: React.FC<{ type?: string }> = ({
 			setLoading(true);
 
 			try {
-				// Create FormData to match CF7 expected format
 				const formData = new FormData();
 				formData.append("yourname", values.yourname);
 				formData.append("youremail", values.youremail);
 				formData.append("yourmobile", values.yourmobile);
-				formData.append("type", type);
+				formData.append("type", values.formtype);
 				formData.append("_wpcf7", formId.toString());
 				formData.append("_wpcf7_version", "5.7.7");
 				formData.append("_wpcf7_locale", "en_US");
 				formData.append("_wpcf7_unit_tag", `wpcf7-f${formId}-p1-o1`);
 				formData.append("_wpcf7_container_post", "0");
 
-				// Contact Form 7 WordPress REST API endpoint
 				const apiUrl = `${process.env.NEXT_PUBLIC_WP_JSON}/wp-json/contact-form-7/v1/contact-forms/${formId}/feedback`;
 				const response = await fetch(apiUrl, {
 					method: "POST",
 					body: formData,
 				});
-
 				const data = await response.json();
 
 				if (!response.ok || data.status !== "mail_sent") {
@@ -95,17 +94,19 @@ const ConnectForm: React.FC<{ type?: string }> = ({
 				alt="Background"
 				className="absolute top-0 left-0 w-full h-full object-cover -z-10"
 			/>
+
 			<div className="mani-title-wrapper">
 				<h2 className="mani-title text-white">LET{"'"}S CONNECT</h2>
 			</div>
-			<div className="container">
+
+			<div className="container max-w-6xl">
 				{success && (
 					<div className="bg-green-100 text-green-900 px-4 py-2 rounded-lg flex items-center justify-between mb-4">
 						<span>{success}</span>
 						<button
-							className="cursor-pointer"
 							type="button"
 							onClick={() => setSuccess(null)}
+							className="cursor-pointer"
 						>
 							<IconX />
 						</button>
@@ -116,9 +117,9 @@ const ConnectForm: React.FC<{ type?: string }> = ({
 					<div className="bg-red-100 text-red-900 px-4 py-2 rounded-lg flex items-center justify-between mb-4">
 						<span>{error}</span>
 						<button
-							className="cursor-pointer"
 							type="button"
 							onClick={() => setError(null)}
+							className="cursor-pointer"
 						>
 							<IconX />
 						</button>
@@ -126,7 +127,7 @@ const ConnectForm: React.FC<{ type?: string }> = ({
 				)}
 
 				<form onSubmit={handleSubmit}>
-					<div className="grid lg:grid-cols-3 grid-cols-1 gap-4 mb-8">
+					<div className="grid lg:grid-cols-2 grid-cols-1 gap-4 mb-8">
 						<div>
 							<input
 								type="text"
@@ -142,7 +143,7 @@ const ConnectForm: React.FC<{ type?: string }> = ({
 								onBlur={handleBlur}
 							/>
 							{touched.yourname && errors.yourname && (
-								<p className="text-red-500 text-sm mt-1">adadad</p>
+								<p className="text-red-500 text-sm mt-1">{errors.yourname}</p>
 							)}
 						</div>
 
@@ -184,7 +185,31 @@ const ConnectForm: React.FC<{ type?: string }> = ({
 							)}
 						</div>
 
-						<div className="lg:col-span-3 col-span-1">
+						<div>
+							<select
+								name="formtype"
+								className={`border-2 ${
+									touched.formtype && errors.formtype
+										? "border-red-500"
+										: "border-white"
+								} px-4 py-2 w-full text-white bg-transparent`}
+								value={values.formtype}
+								onChange={handleChange}
+								onBlur={handleBlur}
+							>
+								<option value="">Select Type *</option>
+								<option value="residential">Residential</option>
+								<option value="commercial">Commercial</option>
+								<option value="retail">Retail</option>
+								<option value="eduhealth">Edu-Health</option>
+								<option value="hospitality">Hospitality</option>
+							</select>
+							{touched.formtype && errors.formtype && (
+								<p className="text-red-500 text-sm mt-1">{errors.formtype}</p>
+							)}
+						</div>
+
+						<div className="lg:col-span-2 col-span-1">
 							<div className="flex items-start">
 								<input
 									type="checkbox"

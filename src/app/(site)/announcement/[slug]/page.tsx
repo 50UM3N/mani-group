@@ -2,19 +2,21 @@ import Content from "@/app/_components/content";
 import InnerBanner from "@/app/_components/inner-banner";
 import { getMetadata } from "@/app/_utils";
 import http from "@/lib/http";
-import { NewsInfo } from "@/types/api/in-the-news.type";
+import { AnnouncementInfo } from "@/types/api/announcement.type";
 import { PageProps, SEOData } from "@/types/index.type";
 import { Metadata } from "next";
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
 	const slug = (await params)?.slug;
-	const data: SEOData = await http(`/seo/in-the-news/${slug}`);
+	const data: SEOData = await http(`/seo/announcement/${slug}`);
 	return getMetadata(data);
 }
 
 const Page = async ({ params }: PageProps<{ slug: string }>) => {
 	const slug = (await params)?.slug;
-	const data: NewsInfo = await http(`/page/in-the-news/by-slug/${slug}`);
+	const data: AnnouncementInfo = await http(
+		`/page/announcement/by-slug/${slug}`
+	);
 	return (
 		<>
 			<InnerBanner

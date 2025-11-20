@@ -67,7 +67,7 @@ const Timeline: React.FC<{
 								}}
 								breakpoints={{
 									1024: {
-										slidesPerView: 3,
+										slidesPerView: 1.5,
 									},
 								}}
 								pagination={true}
