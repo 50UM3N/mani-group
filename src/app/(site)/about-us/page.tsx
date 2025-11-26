@@ -194,64 +194,62 @@ const Page = () => {
 						</h2>
 						<article className="prose max-w-none text-black">
 							<p>Dear Friend,</p>
-
 							<p>
 								Our journey began with a simple mission, to improve the quality
 								of life. In four decades it helped us carve a niche to remain
 								passionately engaged in exceeding customer expectations and
 								enhancing value through quality developments.
 							</p>
-
 							<p>
 								We have delivered over 50 prime destinations spanning over 10
 								million sq ft. A further 30 million sq ft are under
 								construction. As a result, the Mani Group has touched the lives
 								of more than 5,000 happy families in Kolkata, Durgapur, Jaipur,
-								Siliguri and Bhubaneswar. The 42, a 250-metre high architectural
-								marvel on the historic Chowringhee in Kolkata, is the tallest
-								tower in Eastern India. It stands as an outstanding feat of
-								precision engineering and remarkable design.
+								Siliguri and Bhubaneswar.
+								<br />
+								The 42, a 250-metre high architectural marvel on the historic
+								Chowringhee in Kolkata, is the tallest tower in Eastern India.
+								It stands as an outstanding feat of precision engineering and
+								remarkable design.
 							</p>
-
 							<p>
 								Our foray into retail began with Mani Square, Kolkata and Pink
 								Square, Jaipur. Both, favourite destinations for shopping,
 								leisure and entertainment. Hospitality initiatives include the
-								JW Marriot, Kolkata. This 5-star deluxe hotel has 281 keys and
-								is fully geared for any global business traveller. Besides, we
-								have been setting up the 94-room Courtyard by Marriott,
-								Siliguri.
+								JW Marriot, Kolkata.
+								<br />
+								This 5-star deluxe hotel has 281 keys and is fully geared for
+								any global business traveller. Besides, we have been setting up
+								the 130-room Courtyard by Marriott, Siliguri.
 							</p>
-
 							<p>
 								In the 100-acre IQ City township, Durgapur, West Bengal, we have
 								ventured into eduhealth where we have created an entire
-								Knowledge & Health Campus. The IQ City Medical College and the
-								IQ City Institute of Nursing Sciences are already training
-								doctors and nurses to serve the nation. The IQ City Medical
-								College Hospital is a teaching hospital with world-class
-								facilities and 814 beds.
+								Knowledge & Health Campus. <br /> The IQ City Medical College
+								and the IQ City Institute of Nursing Sciences are already
+								training doctors and nurses to serve the nation. The IQ City
+								Medical College Hospital is a teaching hospital with world-class
+								facilities and 1200 beds.
 							</p>
-
 							<p>The Group’s verticals spread across . . .</p>
-
 							<ul>
-								<li>Residential.</li>
+								<li> Residential.</li>
 								<li>Retail.</li>
 								<li>Commercial.</li>
 								<li>Education and Healthcare.</li>
 							</ul>
-
 							<p>
 								Our commitment to high-quality building, dovetailed with
 								transparent work ethics has made us the desirable developer
-								among diverse audiences. Going forward, we pledge to harness the
-								best talent to create top notch residential, commercial,
-								hospitality, edu-health infrastructure for holistic solutions.
-								All the while upholding the highest standards of trust,
-								integrity, service and corporate social responsibility.
+								among diverse audiences.
 							</p>
-
+							<p>
+								Going forward, we pledge to harness the best talent to create
+								top notch residential, commercial, hospitality, edu-health
+								infrastructure for holistic solutions. All the while upholding
+								the highest standards of trust, integrity, service and corporate
+								social responsibility.
+							</p>
 							<p>With best wishes,</p>
 						</article>
 					</div>

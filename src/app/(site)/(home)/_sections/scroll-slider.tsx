@@ -3,7 +3,6 @@ import d2 from "@/app/_assets/disposable/d2.png";
 import d3 from "@/app/_assets/disposable/d3.png";
 import d4 from "@/app/_assets/disposable/d4.png";
 import d5 from "@/app/_assets/disposable/d5.png";
-import d6 from "@/app/_assets/disposable/d6.png";
 import Image from "next/image";
 
 const data = [
@@ -13,24 +12,19 @@ const data = [
 		image: d2,
 	},
 	{
-		title: "40+ MILLION SQ FT.",
-		description: "PRIME DEVELOPMENT",
+		title: "60+ Million",
+		description: "Sq Ft of Prime Development",
 		image: d3,
 	},
 	{
-		title: "5+ MILLION SQ FT.",
-		description: "UNDER CONSTRUCTION",
+		title: "10+ Million",
+		description: "Sq Ft Under Construction",
 		image: d4,
 	},
 	{
-		title: "5000+",
+		title: "9000+",
 		description: "HAPPY FAMILIES",
 		image: d5,
-	},
-	{
-		title: "5 VERTICALS",
-		description: "ONE VISION",
-		image: d6,
 	},
 ];
 
@@ -69,7 +63,9 @@ const ScrollSlider = () => {
 						<p className="sm:text-5xl text-2xl mb-2 font-semibold">
 							{item.title}
 						</p>
-						<h2 className="sm:text-5xl text-2xl font-bold">{item.description}</h2>
+						<h2 className="sm:text-5xl text-2xl font-bold">
+							{item.description}
+						</h2>
 					</div>
 				</div>
 			))}
