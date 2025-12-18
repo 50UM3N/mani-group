@@ -201,10 +201,10 @@ const Page = () => {
 								enhancing value through quality developments.
 							</p>
 							<p>
-								We have delivered over 50 prime destinations spanning over 10
-								million sq ft. A further 30 million sq ft are under
+								We have delivered over 50 prime destinations spanning over 60
+								million sq ft. A further 10 million sq ft are under
 								construction. As a result, the Mani Group has touched the lives
-								of more than 5,000 happy families in Kolkata, Durgapur, Jaipur,
+								of more than 9,000 happy families in Kolkata, Durgapur, Jaipur,
 								Siliguri and Bhubaneswar.
 								<br />
 								The 42, a 250-metre high architectural marvel on the historic
