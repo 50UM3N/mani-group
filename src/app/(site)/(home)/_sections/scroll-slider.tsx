@@ -29,7 +29,7 @@ const data = [
 ];
 
 // const ScrollSlider = () => {
-// 	return (
+// 	return ( 
 // 		<div className="h-svh w-svw overflow-y-scroll snap-y snap-mandatory">
 // 			{data.map((item, index) => (
 // 				<div className="h-svh relative snap-start" key={index}>
