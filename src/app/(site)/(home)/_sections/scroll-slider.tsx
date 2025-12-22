@@ -17,19 +17,19 @@ const data = [
 		image: d3,
 	},
 	{
-		title: "10+ Million",
+		title: "15+ Million",
 		description: "Sq Ft Under Construction",
 		image: d4,
 	},
 	{
-		title: "9000+",
+		title: "12000+",
 		description: "HAPPY FAMILIES",
 		image: d5,
 	},
 ];
 
 // const ScrollSlider = () => {
-// 	return (
+// 	return ( 
 // 		<div className="h-svh w-svw overflow-y-scroll snap-y snap-mandatory">
 // 			{data.map((item, index) => (
 // 				<div className="h-svh relative snap-start" key={index}>
