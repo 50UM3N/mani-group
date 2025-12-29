@@ -25,7 +25,7 @@ const Page = async () => {
 				dangerouslySetInnerHTML={{ __html: data.content }}
 			></section>
 			<Statistic data={data.statistics} />
-			<Timeline data={data.commercial} link="/commercial" />
+			<Timeline upcoming={data.upcoming} data={data.commercial} link="/commercial" />
 		</>
 	);
 };

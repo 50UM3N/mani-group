@@ -33,6 +33,7 @@ export interface BrandInfo extends PageDetails {
 }
 export interface HospitalityPageInfo extends PageDetails {
 	hospitality: { [year: string]: HospitalityInfo[] };
+	upcoming: HospitalityInfo[];
 	statistics: Statistics[];
 }
 
@@ -40,6 +41,7 @@ export interface HospitalityInfo extends PageDetails, ProjectInfo {}
 
 export interface EduHealthPageInfo extends PageDetails {
 	eduhealth: { [year: string]: EduHealthInfo[] };
+	upcoming: EduHealthInfo[];
 	statistics: Statistics[];
 }
 
@@ -47,6 +49,7 @@ export interface EduHealthInfo extends PageDetails, ProjectInfo {}
 
 export interface CommercialPageInfo extends PageDetails {
 	commercial: { [year: string]: CommercialInfo[] };
+	upcoming: CommercialInfo[];
 	statistics: Statistics[];
 }
 
@@ -54,6 +57,7 @@ export interface CommercialInfo extends PageDetails, ProjectInfo {}
 
 export interface ResidentialPageInfo extends PageDetails {
 	residential: { [year: string]: ResidentialInfo[] };
+	upcoming: ResidentialInfo[];
 	statistics: Statistics[];
 }
 
