@@ -6,8 +6,8 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "home.samuraiscripter.com",
+        protocol: "https",
+        hostname: "cms.mani-group.com",
       },
     ],
   },
