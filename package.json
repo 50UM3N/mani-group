@@ -8,6 +8,7 @@
 		"start": "node server.js",
 		"lint": "eslint"
 	},
+	"type": "module",
 	"dependencies": {
 		"@next/third-parties": "^16.0.0",
 		"@radix-ui/react-popover": "^1.1.15",
