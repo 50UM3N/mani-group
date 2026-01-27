@@ -71,7 +71,7 @@ export default async function RootLayout({
 				<Header menu={menu} />
 				{children}
 				<Footer menu={menu} />
-				<GoogleAnalytics gaId="G-0P3B8M7SWG" />
+				<GoogleAnalytics gaId="G-3XTYFQ8K5V" />
 			</body>
 		</html>
 	);
