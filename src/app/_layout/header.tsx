@@ -72,7 +72,7 @@ import Link from "next/link";
 // 	},
 // ];
 
-const Header: React.FC<{ menu: MenuType }> = ({menu}) => {
+const Header: React.FC<{ menu: MenuType }> = ({ menu }) => {
 	const [open, setOpen] = useState(false);
 	const handleMenuClick = () => {
 		setOpen((s) => !s);
@@ -94,7 +94,7 @@ const Header: React.FC<{ menu: MenuType }> = ({menu}) => {
 			<header className="absolute top-0 left-0 right-0 z-10 p-4 sm:p-6 md:p-8">
 				<div className="container mx-auto flex justify-between items-center">
 					<SocialLinks
-						links={{ facebook: "#", x: "#", instagram: "#", youtube: "#" }}
+						links={{ facebook: "#", instagram: "#", youtube: "#" }}
 						className="text-white hidden lg:flex"
 					/>
 					<Link
@@ -158,7 +158,6 @@ const DesktopMenu: React.FC<{
 				<SocialLinks
 					links={{
 						facebook: "#",
-						x: "#",
 						instagram: "#",
 						youtube: "#",
 					}}
@@ -212,7 +211,6 @@ const MobileMenu: React.FC<{
 			<SocialLinks
 				links={{
 					facebook: "#",
-					x: "#",
 					instagram: "#",
 					youtube: "#",
 				}}

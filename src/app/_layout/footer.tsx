@@ -47,7 +47,7 @@ const Footer: React.FC<{ menu: MenuType }> = ({ menu }) => {
 				</div>
 				<div className="flex sm:flex-row flex-col justify-between mb-8 gap-8">
 					<SocialLinks
-						links={{ facebook: "#", x: "#", instagram: "#", youtube: "#" }}
+						links={{ facebook: "#", instagram: "#", youtube: "#" }}
 					/>
 					<NewsLetterForm />
 				</div>

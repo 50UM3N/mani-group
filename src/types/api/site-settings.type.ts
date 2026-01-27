@@ -26,10 +26,10 @@ export interface Number {
 }
 
 export interface SocialLinksInfo {
-  facebook: string;
-  x: string;
-  instagram: string;
-  youtube: string;
+  facebook?: string;
+  x?: string;
+  instagram?: string;
+  youtube?: string;
 }
 
 export interface PopupInfo {
