@@ -21,7 +21,7 @@ const Latest: React.FC<{ data: AnnouncementInfo[] }> = ({ data }) => {
 			>
 				<h2 className="mani-title">LATEST BY MANI</h2>
 				<p className="text-center">
-					Representing a Bespoke Collection of Mani's Future
+					Representing a Bespoke Collection of Mani{"'"}s Future
 				</p>
 			</motion.div>
 			<Swiper
