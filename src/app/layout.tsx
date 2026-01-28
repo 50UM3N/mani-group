@@ -18,6 +18,7 @@ import "lightgallery/css/lg-zoom.css";
 import "lightgallery/css/lg-video.css";
 import { MenuType } from "@/types/api/menu.type";
 import http from "@/lib/http";
+import { SiteSettingsInfo } from "@/types/api/site-settings.type";
 export const dynamic = "force-dynamic";
 
 const raleway = Raleway({
@@ -56,21 +57,23 @@ export default async function RootLayout({
 		},
 	};
 	const menu: MenuType = await http(`/menus/9`);
+
+	const siteSettings: SiteSettingsInfo = await http(`/site-settings`);
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<body
 				className={cn(
 					raleway.variable,
 					cormorant_garamond.variable,
-					"overflow-x-hidden"
+					"overflow-x-hidden",
 				)}
 			>
 				<SchemaOrg schema={organizationSchema} />
 				<SiteLoader />
 				<NextTopLoader color="#71717a" />
-				<Header menu={menu} />
+				<Header menu={menu} siteSettings={siteSettings} />
 				{children}
-				<Footer menu={menu} />
+				<Footer menu={menu} siteSettings={siteSettings} />
 				<GoogleAnalytics gaId="G-3XTYFQ8K5V" />
 			</body>
 		</html>

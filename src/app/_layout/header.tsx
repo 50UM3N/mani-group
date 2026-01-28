@@ -7,6 +7,7 @@ import { IconMenu2, IconX } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import { MenuType } from "@/types/api/menu.type";
 import Link from "next/link";
+import { SiteSettingsInfo } from "@/types/api/site-settings.type";
 
 // const menu: MenuType = [
 // 	{
@@ -72,7 +73,10 @@ import Link from "next/link";
 // 	},
 // ];
 
-const Header: React.FC<{ menu: MenuType }> = ({ menu }) => {
+const Header: React.FC<{ menu: MenuType; siteSettings: SiteSettingsInfo }> = ({
+	menu,
+	siteSettings,
+}) => {
 	const [open, setOpen] = useState(false);
 	const handleMenuClick = () => {
 		setOpen((s) => !s);
@@ -94,7 +98,7 @@ const Header: React.FC<{ menu: MenuType }> = ({ menu }) => {
 			<header className="absolute top-0 left-0 right-0 z-10 p-4 sm:p-6 md:p-8">
 				<div className="container mx-auto flex justify-between items-center">
 					<SocialLinks
-						links={{ facebook: "#", instagram: "#", youtube: "#" }}
+						links={siteSettings.social_links}
 						className="text-white hidden lg:flex"
 					/>
 					<Link
@@ -125,8 +129,16 @@ const Header: React.FC<{ menu: MenuType }> = ({ menu }) => {
 								<IconX className="lg:size-16 size-8" />
 							</button>
 						</div>
-						<DesktopMenu menu={menu} handleMenuClick={handleMenuClick} />
-						<MobileMenu menu={menu} handleMenuClick={handleMenuClick} />
+						<DesktopMenu
+							siteSettings={siteSettings}
+							menu={menu}
+							handleMenuClick={handleMenuClick}
+						/>
+						<MobileMenu
+							siteSettings={siteSettings}
+							menu={menu}
+							handleMenuClick={handleMenuClick}
+						/>
 					</div>
 				</div>
 			)}
@@ -139,7 +151,8 @@ export default Header;
 const DesktopMenu: React.FC<{
 	menu: MenuType;
 	handleMenuClick: () => void;
-}> = ({ menu, handleMenuClick }) => {
+	siteSettings: SiteSettingsInfo;
+}> = ({ menu, handleMenuClick, siteSettings }) => {
 	const [openedMenu, setOpenedMenu] = useState(-1);
 	return (
 		<div className="lg:grid lg:grid-cols-2 gap-8 hidden">
@@ -156,11 +169,7 @@ const DesktopMenu: React.FC<{
 					))}
 				</div>
 				<SocialLinks
-					links={{
-						facebook: "#",
-						instagram: "#",
-						youtube: "#",
-					}}
+					links={siteSettings.social_links}
 					className="text-black"
 					size={40}
 				/>
@@ -186,7 +195,8 @@ const DesktopMenu: React.FC<{
 const MobileMenu: React.FC<{
 	menu: MenuType;
 	handleMenuClick: () => void;
-}> = ({ menu, handleMenuClick }) => {
+	siteSettings: SiteSettingsInfo;
+}> = ({ menu, handleMenuClick, siteSettings }) => {
 	return (
 		<div className="grid lg:grid-cols-2 gap-8 lg:hidden">
 			{menu.map((menuItem) => (
@@ -209,11 +219,7 @@ const MobileMenu: React.FC<{
 				</div>
 			))}
 			<SocialLinks
-				links={{
-					facebook: "#",
-					instagram: "#",
-					youtube: "#",
-				}}
+				links={siteSettings.social_links}
 				className="text-black"
 				size={40}
 			/>

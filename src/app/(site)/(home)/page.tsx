@@ -14,7 +14,6 @@ import { SEOData } from "@/types/index.type";
 import { Metadata } from "next";
 import { getMetadata } from "@/app/_utils";
 import { HomePageInfo } from "@/types/api/home.type";
-// import { SiteSettingsInfo } from "@/types/api/site-settings.type";
 import Link from "next/link";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -24,7 +23,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const Page = async () => {
 	const data: HomePageInfo = await http(`/page/home`);
-	// const siteSettings: SiteSettingsInfo = await http(`/site-settings`);
 	return (
 		<main>
 			<HeroSlider />

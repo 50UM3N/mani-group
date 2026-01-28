@@ -4,7 +4,11 @@ import Image from "next/image";
 import SocialLinks from "../_components/social-links";
 import { MenuType } from "@/types/api/menu.type";
 import NewsLetterForm from "./_components/news-letter-form";
-const Footer: React.FC<{ menu: MenuType }> = ({ menu }) => {
+import { SiteSettingsInfo } from "@/types/api/site-settings.type";
+const Footer: React.FC<{
+	menu: MenuType;
+	siteSettings: SiteSettingsInfo;
+}> = async ({ menu, siteSettings }) => {
 	return (
 		<footer className="p-section pb-8 bg-color-1">
 			<div className="container">
@@ -46,9 +50,7 @@ const Footer: React.FC<{ menu: MenuType }> = ({ menu }) => {
 					))}
 				</div>
 				<div className="flex sm:flex-row flex-col justify-between mb-8 gap-8">
-					<SocialLinks
-						links={{ facebook: "#", instagram: "#", youtube: "#" }}
-					/>
+					<SocialLinks links={siteSettings.social_links} />
 					<NewsLetterForm />
 				</div>
 				<div className="border-t border-black pt-8">
