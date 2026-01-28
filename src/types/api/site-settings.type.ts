@@ -30,6 +30,7 @@ export interface SocialLinksInfo {
   x?: string;
   instagram?: string;
   youtube?: string;
+  linkedin?: string;
 }
 
 export interface PopupInfo {

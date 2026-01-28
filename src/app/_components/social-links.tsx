@@ -6,6 +6,7 @@ import {
 	IconBrandInstagram,
 	IconBrandX,
 	IconBrandYoutube,
+	IconBrandLinkedin,
 } from "@tabler/icons-react";
 import Link from "next/link";
 import React from "react";
@@ -36,6 +37,11 @@ const SocialLinks: React.FC<
 			{links?.youtube && (
 				<Link target="_blank" href={links.youtube}>
 					<IconBrandYoutube size={size} />
+				</Link>
+			)}
+			{links?.linkedin && (
+				<Link target="_blank" href={links.linkedin}>
+					<IconBrandLinkedin size={size} />
 				</Link>
 			)}
 		</div>
