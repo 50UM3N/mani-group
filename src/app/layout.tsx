@@ -60,7 +60,7 @@ export default async function RootLayout({
 
 	const siteSettings: SiteSettingsInfo = await http(`/site-settings`);
 	return (
-		<html lang="en" suppressHydrationWarning>
+		<html lang="en" suppressHydrationWarning className="overflow-x-hidden">
 			<body
 				className={cn(
 					raleway.variable,

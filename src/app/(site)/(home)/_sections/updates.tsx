@@ -5,16 +5,23 @@ import { Navigation } from "swiper/modules";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { NewsInfo } from "@/types/api/in-the-news.type";
 import ContentCard from "@/app/_components/content-card";
+import { motion } from "framer-motion";
 
 const Updates: React.FC<{ data: NewsInfo[] }> = ({ data }) => {
 	return (
 		<section className="m-section relative">
-			<div className="mani-title-wrapper">
+			<motion.div
+				initial={{ opacity: 0, y: 30 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.7 }}
+				viewport={{ once: true }}
+				className="mani-title-wrapper"
+			>
 				<h2 className="mani-title">MANI UPDATES</h2>
 				<p className="text-center">
 					Stay tuned to our latest news and notifications
 				</p>
-			</div>
+			</motion.div>
 			<div className="container">
 				<Swiper
 					className="lg:mb-20 mb-8"
@@ -24,10 +31,11 @@ const Updates: React.FC<{ data: NewsInfo[] }> = ({ data }) => {
 					}}
 					modules={[Navigation]}
 					spaceBetween={12}
-					slidesPerView={2}
+					slidesPerView={1}
 					breakpoints={{
 						1024: {
 							spaceBetween: 32,
+							slidesPerView: 2,
 						},
 					}}
 				>

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { IconRefresh, IconX } from "@tabler/icons-react";
+import { motion } from "framer-motion";
 
 const ConnectForm: React.FC<{ type?: string }> = ({
 	type = "connect-form",
@@ -95,11 +96,23 @@ const ConnectForm: React.FC<{ type?: string }> = ({
 				className="absolute top-0 left-0 w-full h-full object-cover -z-10"
 			/>
 
-			<div className="mani-title-wrapper">
+			<motion.div
+				initial={{ opacity: 0, y: 30 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.7 }}
+				viewport={{ once: true }}
+				className="mani-title-wrapper"
+			>
 				<h2 className="mani-title text-white">LET{"'"}S CONNECT</h2>
-			</div>
+			</motion.div>
 
-			<div className="container max-w-6xl">
+			<motion.div
+				initial={{ opacity: 0, y: 40 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.8, delay: 0.2 }}
+				viewport={{ once: true }}
+				className="container max-w-6xl"
+			>
 				{success && (
 					<div className="bg-green-100 text-green-900 px-4 py-2 rounded-lg flex items-center justify-between mb-4">
 						<span>{success}</span>
@@ -250,7 +263,7 @@ const ConnectForm: React.FC<{ type?: string }> = ({
 						</button>
 					</div>
 				</form>
-			</div>
+			</motion.div>
 		</section>
 	);
 };

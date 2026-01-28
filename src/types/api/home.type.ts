@@ -8,6 +8,7 @@ export interface HomePageInfo extends PageDetails {
 	announcement: AnnouncementInfo[];
 	news: NewsInfo[];
 	award: AwardsInfo[];
+	sliders: Slider[];
 }
 
 export type HomeBanner = {
@@ -15,3 +16,13 @@ export type HomeBanner = {
 	description: string;
 	banners: ImageMeta[];
 };
+
+export interface Slider {
+	image: ImageMeta;
+	title: string;
+	description: string;
+	button?: {
+		label?: string;
+		url?: string;
+	};
+}

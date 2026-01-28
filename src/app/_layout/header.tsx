@@ -8,70 +8,8 @@ import { useEffect, useState } from "react";
 import { MenuType } from "@/types/api/menu.type";
 import Link from "next/link";
 import { SiteSettingsInfo } from "@/types/api/site-settings.type";
+import { motion, AnimatePresence } from "framer-motion";
 
-// const menu: MenuType = [
-// 	{
-// 		id: 1,
-// 		title: "ABOUT MANI",
-// 		url: "",
-// 		children: [
-// 			{
-// 				id: 11,
-// 				title: "Mission & Vision",
-// 				url: "/mission-vision",
-// 				children: [],
-// 			},
-// 			{ id: 12, title: "Team", url: "/team", children: [] },
-// 			{ id: 13, title: "CSR", url: "/csr", children: [] },
-// 			{ id: 14, title: "Testimonials", url: "/testimonial", children: [] },
-// 			{
-// 				id: 15,
-// 				title: "Awards & Achievements",
-// 				url: "/achievement",
-// 				children: [],
-// 			},
-// 			{ id: 16, title: "Mani Colleagues", url: "/colleague", children: [] },
-// 			{ id: 17, title: "Contact Us", url: "/contact-us", children: [] },
-// 		],
-// 	},
-// 	{
-// 		id: 2,
-// 		title: "VERTICALS",
-// 		url: "/verticals",
-// 		children: [
-// 			{ id: 21, title: "Residential", url: "/residential", children: [] },
-// 			{ id: 22, title: "Commercial", url: "/commercial", children: [] },
-// 			{ id: 23, title: "Edu-Health", url: "/eduhealth", children: [] },
-// 			{ id: 24, title: "Hospitality", url: "/hospitality", children: [] },
-// 			{ id: 25, title: "Retail", url: "/retail", children: [] },
-// 		],
-// 	},
-// 	{
-// 		id: 3,
-// 		title: "MEDIA CENTRE",
-// 		url: "/media",
-// 		children: [
-// 			{ id: 31, title: "In the News", url: "/in-the-news", children: [] },
-// 			{ id: 32, title: "Latest @ Mani", url: "/latest", children: [] },
-// 			{ id: 33, title: "Photo Gallery", url: "/photo-gallery", children: [] },
-// 			{ id: 34, title: "Video Gallery", url: "/video-gallery", children: [] },
-// 			{ id: 35, title: "News Letter", url: "/newsletter", children: [] },
-// 		],
-// 	},
-// 	{
-// 		id: 4,
-// 		title: "CAREERS",
-// 		url: "/careers",
-// 		children: [
-// 			{
-// 				id: 41,
-// 				title: "Life @ Mani",
-// 				url: "/careers/life-at-mani",
-// 				children: [],
-// 			},
-// 		],
-// 	},
-// ];
 
 const Header: React.FC<{ menu: MenuType; siteSettings: SiteSettingsInfo }> = ({
 	menu,
@@ -88,7 +26,6 @@ const Header: React.FC<{ menu: MenuType; siteSettings: SiteSettingsInfo }> = ({
 			document.body.style.overflow = "unset";
 		}
 
-		// Cleanup function to ensure overflow is restored
 		return () => {
 			document.body.style.overflow = "unset";
 		};
@@ -120,28 +57,102 @@ const Header: React.FC<{ menu: MenuType; siteSettings: SiteSettingsInfo }> = ({
 					</button>
 				</div>
 			</header>
-			{open && (
-				<div className="fixed top-0 left-0 w-full h-svh z-50 bg-color-1 overflow-y-auto">
-					<div className="container p-section space-y-20">
-						<div className="flex justify-between">
-							<Image src={logov2} alt="Mani Logo" className="w-full max-w-sm" />
-							<button onClick={handleMenuClick}>
-								<IconX className="lg:size-16 size-8" />
-							</button>
-						</div>
-						<DesktopMenu
-							siteSettings={siteSettings}
-							menu={menu}
-							handleMenuClick={handleMenuClick}
-						/>
-						<MobileMenu
-							siteSettings={siteSettings}
-							menu={menu}
-							handleMenuClick={handleMenuClick}
-						/>
-					</div>
+			<AnimatePresence>
+				{open && (
+					<div className="fixed top-0 left-0 w-full h-svh z-50 overflow-hidden">
+						{/* Staircase background animation */}
+						{Array.from({ length: 6 }).map((_, index) => {
+							return (
+								<motion.div
+									key={index}
+									initial={{ scaleX: 0 }}
+									animate={{ scaleX: 1 }}
+									exit={{ scaleX: 0 }}
+									transition={{
+										duration: 0.5,
+										delay: index * 0.05,
+										ease: [0.22, 1, 0.36, 1],
+									}}
+									className="absolute left-0 w-full bg-color-1"
+									style={{
+										transformOrigin: "right",
+										top: `${index * 16.66}%`,
+										height: "16.66%",
+										zIndex: 6 - index,
+									}}
+								/>
+							);
+						})}
+						
+						<motion.div
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0 }}
+							transition={{ 
+								duration: 0.2,
+								delay: 0,
+								ease: "easeOut"
+							}}
+							className="relative z-10 w-full h-full overflow-y-auto"
+						>
+							<motion.div
+								initial={{ y: -20, opacity: 0 }}
+								animate={{ y: 0, opacity: 1 }}
+								exit={{ y: -20, opacity: 0 }}
+								transition={{ 
+									duration: 0.2,
+									delay: 0,
+									ease: "easeOut"
+								}}
+								className="container p-4 sm:p-6 md:p-8 lg:p-section space-y-12 lg:space-y-20"
+							>
+							<div className="flex justify-between items-center">
+								<motion.div
+									initial={{ x: -20, opacity: 0 }}
+									animate={{ x: 0, opacity: 1 }}
+									exit={{ x: -20, opacity: 0 }}
+									transition={{ 
+										duration: 0.2,
+										delay: 0,
+										ease: "easeOut"
+									}}
+								>
+									<Image
+										src={logov2}
+										alt="Mani Logo"
+										className="w-full max-w-[180px] sm:max-w-60 lg:max-w-sm"
+									/>
+								</motion.div>
+								<motion.button
+									onClick={handleMenuClick}
+									whileHover={{ scale: 1.1 }}
+									initial={{ x: 20, opacity: 0 }}
+									animate={{ x: 0, opacity: 1 }}
+									exit={{ x: 20, opacity: 0 }}
+									transition={{ 
+										duration: 0.2,
+										delay: 0,
+										ease: "easeOut"
+									}}
+								>
+									<IconX className="lg:size-16 size-8 sm:size-10" />
+								</motion.button>
+							</div>
+							<DesktopMenu
+								siteSettings={siteSettings}
+								menu={menu}
+								handleMenuClick={handleMenuClick}
+							/>
+							<MobileMenu
+								siteSettings={siteSettings}
+								menu={menu}
+								handleMenuClick={handleMenuClick}
+							/>
+						</motion.div>
+					</motion.div>
 				</div>
-			)}
+				)}
+			</AnimatePresence>
 		</>
 	);
 };
@@ -154,41 +165,117 @@ const DesktopMenu: React.FC<{
 	siteSettings: SiteSettingsInfo;
 }> = ({ menu, handleMenuClick, siteSettings }) => {
 	const [openedMenu, setOpenedMenu] = useState(-1);
+
+	const containerVariants = {
+		hidden: { opacity: 0 },
+		visible: {
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.1,
+				delayChildren: 0.3,
+			},
+		},
+	};
+
+	const itemVariants = {
+		hidden: { x: -20, opacity: 0 },
+		visible: {
+			x: 0,
+			opacity: 1,
+			transition: {
+				duration: 0.5,
+			},
+		},
+	};
+
+	const submenuVariants = {
+		hidden: { x: 20, opacity: 0, height: 0 },
+		visible: {
+			x: 0,
+			opacity: 1,
+			height: "auto",
+			transition: {
+				duration: 0.4,
+				staggerChildren: 0.08,
+				delayChildren: 0.1,
+			},
+		},
+		exit: {
+			x: 20,
+			opacity: 0,
+			height: 0,
+			transition: {
+				duration: 0.3,
+			},
+		},
+	};
+
+	const submenuItemVariants = {
+		hidden: { x: 20, opacity: 0 },
+		visible: {
+			x: 0,
+			opacity: 1,
+		},
+	};
+
 	return (
-		<div className="lg:grid lg:grid-cols-2 gap-8 hidden">
+		<motion.div
+			variants={containerVariants}
+			initial="hidden"
+			animate="visible"
+			className="lg:grid lg:grid-cols-2 gap-8 hidden"
+		>
 			<div className="space-y-20">
-				<div className="flex flex-col gap-12">
+				<motion.div className="flex flex-col gap-8 lg:gap-12">
 					{menu.map((menuItem, index) => (
-						<div
-							className="font-cormorant-garamond text-6xl cursor-pointer"
+						<motion.div
+							variants={itemVariants}
 							key={menuItem.id}
+							whileHover={{ x: 10, color: "#666" }}
+							className="font-cormorant-garamond text-5xl lg:text-6xl cursor-pointer transition-colors"
 							onClick={() => setOpenedMenu((s) => (s === index ? -1 : index))}
 						>
 							{menuItem.title}
-						</div>
+						</motion.div>
 					))}
-				</div>
-				<SocialLinks
-					links={siteSettings.social_links}
-					className="text-black"
-					size={40}
-				/>
+				</motion.div>
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ delay: 0.8 }}
+				>
+					<SocialLinks
+						links={siteSettings.social_links}
+						className="text-black"
+						size={40}
+					/>
+				</motion.div>
 			</div>
-			{openedMenu >= 0 && (
-				<div className="space-y-4 flex flex-col">
-					{menu[openedMenu]?.children?.map((item) => (
-						<Link
-							className="font-cormorant-garamond text-4xl cursor-pointer"
-							key={item.id}
-							href={item.url}
-							onClick={handleMenuClick}
-						>
-							{item.title}
-						</Link>
-					))}
-				</div>
-			)}
-		</div>
+			<AnimatePresence mode="wait">
+				{openedMenu >= 0 && (
+					<motion.div
+						key={openedMenu}
+						variants={submenuVariants}
+						initial="hidden"
+						animate="visible"
+						exit="exit"
+						className="space-y-4 flex flex-col overflow-hidden"
+					>
+						{menu[openedMenu]?.children?.map((item) => (
+							<motion.div key={item.id} variants={submenuItemVariants}>
+								<Link
+									className="font-cormorant-garamond text-3xl lg:text-4xl cursor-pointer block hover:text-gray-600 transition-colors"
+									href={item.url}
+									onClick={handleMenuClick}
+								>
+									{item.title}
+								</Link>
+							</motion.div>
+						))}
+					</motion.div>
+				)}
+			</AnimatePresence>
+		</motion.div>
 	);
 };
 
@@ -197,32 +284,117 @@ const MobileMenu: React.FC<{
 	handleMenuClick: () => void;
 	siteSettings: SiteSettingsInfo;
 }> = ({ menu, handleMenuClick, siteSettings }) => {
+	const [expandedMenus, setExpandedMenus] = useState<number[]>([]);
+
+	const toggleMenu = (index: number) => {
+		setExpandedMenus((prev) =>
+			prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
+		);
+	};
+
+	const containerVariants = {
+		hidden: { opacity: 0 },
+		visible: {
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.08,
+				delayChildren: 0.3,
+			},
+		},
+	};
+
+	const itemVariants = {
+		hidden: { y: 20, opacity: 0 },
+		visible: {
+			y: 0,
+			opacity: 1,
+			transition: {
+				duration: 0.4,
+			},
+		},
+	};
+
+	const submenuVariants = {
+		hidden: { height: 0, opacity: 0 },
+		visible: {
+			height: "auto",
+			opacity: 1,
+			transition: {
+				duration: 0.3,
+				staggerChildren: 0.05,
+			},
+		},
+		exit: {
+			height: 0,
+			opacity: 0,
+			transition: {
+				duration: 0.2,
+			},
+		},
+	};
+
+	const submenuItemVariants = {
+		hidden: { x: -10, opacity: 0 },
+		visible: {
+			x: 0,
+			opacity: 1,
+		},
+	};
+
 	return (
-		<div className="grid lg:grid-cols-2 gap-8 lg:hidden">
-			{menu.map((menuItem) => (
-				<div key={menuItem.id}>
-					<div className="font-cormorant-garamond text-3xl cursor-pointer mb-2">
-						{menuItem.title}
-					</div>
-					<div className="flex flex-col gap-2">
-						{menuItem?.children?.map((item) => (
-							<Link
-								className="font-cormorant-garamond text-xl cursor-pointer"
-								key={item.id}
-								href={item.url}
-								onClick={handleMenuClick}
+		<motion.div
+			variants={containerVariants}
+			initial="hidden"
+			animate="visible"
+			className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 lg:hidden"
+		>
+			{menu.map((menuItem, index) => (
+				<motion.div key={menuItem.id} variants={itemVariants}>
+					<motion.div
+						className="font-cormorant-garamond text-2xl sm:text-3xl cursor-pointer mb-3 sm:mb-4 flex items-center justify-between"
+						onClick={() => toggleMenu(index)}
+					>
+						<span>{menuItem.title}</span>
+						<motion.span
+							animate={{ rotate: expandedMenus.includes(index) ? 180 : 0 }}
+							transition={{ duration: 0.3 }}
+							className="text-xl"
+						>
+							▼
+						</motion.span>
+					</motion.div>
+					<AnimatePresence>
+						{expandedMenus.includes(index) && (
+							<motion.div
+								variants={submenuVariants}
+								initial="hidden"
+								animate="visible"
+								exit="exit"
+								className="flex flex-col gap-2 sm:gap-3 overflow-hidden"
 							>
-								{item.title}
-							</Link>
-						))}
-					</div>
-				</div>
+								{menuItem?.children?.map((item) => (
+									<motion.div key={item.id} variants={submenuItemVariants}>
+										<Link
+											className="font-cormorant-garamond text-lg sm:text-xl cursor-pointer block py-1 hover:text-gray-600 transition-colors"
+											href={item.url}
+											onClick={handleMenuClick}
+										>
+											{item.title}
+										</Link>
+									</motion.div>
+								))}
+							</motion.div>
+						)}
+					</AnimatePresence>
+				</motion.div>
 			))}
-			<SocialLinks
-				links={siteSettings.social_links}
-				className="text-black"
-				size={40}
-			/>
-		</div>
+			<motion.div variants={itemVariants} className="col-span-1 sm:col-span-2">
+				<SocialLinks
+					links={siteSettings.social_links}
+					className="text-black"
+					size={36}
+				/>
+			</motion.div>
+		</motion.div>
 	);
 };

@@ -7,16 +7,23 @@ import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import Image from "next/image";
 import m2 from "@/app/_assets/mock/m2.png";
 import { AnnouncementInfo } from "@/types/api/announcement.type";
+import { motion } from "framer-motion";
 
 const Latest: React.FC<{ data: AnnouncementInfo[] }> = ({ data }) => {
 	return (
 		<section className="m-section relative">
-			<div className="mani-title-wrapper">
+			<motion.div
+				initial={{ opacity: 0, y: 30 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.7 }}
+				viewport={{ once: true }}
+				className="mani-title-wrapper"
+			>
 				<h2 className="mani-title">LATEST BY MANI</h2>
 				<p className="text-center">
-					Representing a Bespoke Collection of Mani’s Future
+					Representing a Bespoke Collection of Mani's Future
 				</p>
-			</div>
+			</motion.div>
 			<Swiper
 				className="lg:mb-20 mb-8"
 				navigation={{

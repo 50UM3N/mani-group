@@ -10,6 +10,8 @@ import {
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { AwardsInfo } from "@/types/api/achievements.type";
+import { motion } from "framer-motion";
+
 const Awards: React.FC<{ data: AwardsInfo[] }> = ({ data }) => {
 	return (
 		<section className="m-section p-section relative">
@@ -19,9 +21,15 @@ const Awards: React.FC<{ data: AwardsInfo[] }> = ({ data }) => {
 				className="w-full h-full object-cover absolute top-0 left-0 -z-20"
 			/>
 			<div className="bg-black/60 absolute top-0 left-0 w-full h-full -z-10"></div>
-			<div className="mani-title-wrapper">
+			<motion.div
+				initial={{ opacity: 0, y: 30 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.7 }}
+				viewport={{ once: true }}
+				className="mani-title-wrapper"
+			>
 				<h2 className="mani-title text-white">AWARDS</h2>
-			</div>
+			</motion.div>
 			<div className="lg:container">
 				<Swiper
 					className="lg:mb-20 mb-8"
